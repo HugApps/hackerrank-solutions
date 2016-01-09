@@ -1,0 +1,78 @@
+Problem Statement
+
+Mark and Jane are very happy after having their first kid. Their son is very fond of toys, so Mark wants to buy some. There are N different toys lying in front of him, tagged with their prices, but he has only $K. He wants to maximize the number of toys he buys with this money.
+
+Now, you are Mark's best friend and have to help him buy as many toys as possible.
+
+Input Format 
+The first line contains two integers, N and K, followed by a line containing N space separated integers indicating the products' prices.
+
+Output Format 
+An integer that denotes maximum number of toys Mark can buy for his son.
+
+Constraints 
+1<=N<=105 
+1<=K<=109 
+1<=price of any toy<=109 
+A toy can't be bought multiple times.
+
+Sample Input
+
+7 50
+1 12 5 111 200 1000 10
+Sample Output
+
+4
+Explanation
+
+He can buy only 4 toys at most. These toys have the following prices: 1,12,5,10.
+
+Copyright © 2016 HackerRank.
+
+
+// SOLUTION
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+import java.util.Arrays;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner stdin=new Scanner(System.in);
+        int n=stdin.nextInt(),k=stdin.nextInt();
+        int prices[]=new int[n];
+        ArrayList<Integer> toys= new ArrayList<Integer>();
+        for(int i=0;i<n;i++) {
+            
+            prices[i]=stdin.nextInt();
+            
+            
+        }
+        Arrays.sort(prices);
+        
+        for(int a=0;a<prices.length;a++){
+            if(prices[a]<=k){toys.add(prices[a]);}
+            
+        }
+        
+        int sum=k;
+        int answer=0;
+        for(Integer x : toys){
+            if(sum>=x){
+                answer++;
+            sum=sum-x;    
+            }
+            
+            
+            if(sum<0){continue;}
+            
+        }
+        
+        // Compute the final answer from n,k,prices 
+        System.out.println(answer);
+    }
+}
