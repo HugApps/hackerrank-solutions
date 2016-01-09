@@ -1,0 +1,66 @@
+roblem Statement
+
+This challenge is part of a tutorial track by MyCodeSchool
+
+You’re given the pointer to the head node of a linked list. Find whether the list contains any cycle (or loop). A linked list is said to contain cycle if any node is re-visited while traversing the list. The head pointer given may be null meaning that the list is empty.
+
+Input Format 
+You have to complete the int HasCycle(Node* head) method which takes one argument - the head of the linked list. You should NOT read any input from stdin/console. Number of nodes in a linked list doesn't exceed 100.
+
+Output Format 
+Check whether the linked list has a cycle and return 1 if there is a cycle. Otherwise, return 0. Do NOT print anything to stdout/console.
+
+Sample Input
+
+1 --> NULL
+
+1 --> 2 --> 3
+      ^     |
+      |     |
+       -----                           
+Sample Output
+
+0
+1
+
+
+
+
+
+// SOLUTION
+
+/*
+  Detect cycle in the list
+  head pointer input could be NULL as well for empty list
+  Node is defined as 
+  class Node {
+     int data;
+     Node next;
+  }
+*/
+int HasCycle(Node head) {
+    if( head==null || head.next==null){
+        return 0;
+    }
+    Node n = head;
+    ArrayList<Node> list = new ArrayList<Node>();
+    list.add(head);
+    
+    
+   
+    while (n!=null){
+        n=n.next;
+       
+        for(Node x : list){
+            if ( x==n){
+                return 1;
+            }
+        }
+        list.add(n);
+       
+   
+    }
+     return 0;
+    
+
+}
